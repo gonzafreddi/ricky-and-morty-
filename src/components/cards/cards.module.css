@@ -1,0 +1,14 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+.divConteiner{
+    margin-top: 40px;
+   
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr) ;
+    gap: 20px; 
+    width: 70%;
+    height: 100%;
+}
