@@ -1,0 +1,23 @@
+.conteiner{
+    color:white;
+    display:flex ;
+    background-color: black;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    
+}
+
+.components{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 39px;
+}
+
+.button{
+    text-decoration: none;
+    color:#56fca2;
+    font-size: 1.4em;
+}

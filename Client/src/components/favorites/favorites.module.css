@@ -1,0 +1,15 @@
+.conteiner{
+    display: flex;
+    justify-content: center;
+}
+.comp{
+    margin-top: 150px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 70%;
+    
+}
+.select{
+    margin-top: 100px;
+}
