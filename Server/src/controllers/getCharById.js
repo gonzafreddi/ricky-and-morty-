@@ -1,11 +1,17 @@
 const axios = require("axios")
+const URL = "https://rickandmortyapi.com/api/character/"
 
-function getCharById(res,id){
-  axios(`https://rickandmortyapi.com/api/character/${id}`)
-  .then((response)=>response.data) //axios nos devuelva una promesa y para acceder hay q hacer un thn mas
-  .then((data)=>{
-    let characater = {
-        id: data.id,
+function getCharById(req, res){
+  const {id} = req.params
+
+  axios(`${URL}${id}`)
+  .then(({data})=>{
+    if(data.error){
+      console.log("error 404")
+      return res.status(404).send(data.error)
+    }
+     const characater = {
+        id: Number(data.id),
         name: data.name,
         gender: data.gender,
         species: data.species,
@@ -13,12 +19,12 @@ function getCharById(res,id){
         image: data.image,
         status: data.status
       }
-     res.writeHead(200, {"Content-Type":"aplication/json"})
-     res.end(JSON.stringify(characater))   
+    return  res.status(200).json(characater) 
   })  
-  .catch((error)=>{
-    res.writeHead(500,{"Content-Type":"aplication/json"})
-    res.end({error: error.message})
+  .catch((error)=>{ 
+    // no pude hacer la solicitud
+   res.status(500).send(error.message)
+   console.log("no pude hacer la solicitud")
   })
 }
 

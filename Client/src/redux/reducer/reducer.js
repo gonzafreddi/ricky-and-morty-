@@ -9,21 +9,13 @@ let initialState = {
  export default function reducer(state = initialState, action){
     switch (action.type) {
       
-        case ADD_FAV:
-        let copy = [...state.allCharacter, action.payload] //hago una copia de all y le agrego lo q meviene x payload
-            return{
-                ...state,
-                myFavorites: copy, allCharacter:[...copy]
-            }
+      // REDUCER | ADD_FAV
+            case 'ADD_FAV':
+            return { ...state, myFavorites: action.payload, allCharacters: action.payload };
      
-     
-            case REMOVE_FAV:
-            return{
-                ...state, 
-                myFavorites: state.allCharacter.filter(character=> character.id !== parseInt(action.payload))
-                
-                // si el id no coincide devuelve true entconces los agrega al nuevo array filtrado 
-            }
+            case 'REMOVE_FAV':
+                return { ...state, myFavorites: action.payload };   // si el id no coincide devuelve true entconces los agrega al nuevo array filtrado 
+            
             case FILTER:
                 return{
                     ...state,

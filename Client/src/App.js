@@ -21,18 +21,18 @@ function App() {
    const [access, setAccess] = useState(true)
    
    const navigate = useNavigate()
-   const EMAIL = "freddigonzalo17@gmail.com"
-   const PASSWORD = "1234567"
-
-
-
    
-   function login(user){
-      if(user.email === EMAIL && user.password === PASSWORD){
-         setAccess(true)
-         navigate("/home")
-      }
 
+
+
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
 
    //si acces es false te devuelve al path/
@@ -43,6 +43,7 @@ function App() {
 
    function onSearch(id) {
       axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
+         console.log(data)
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
