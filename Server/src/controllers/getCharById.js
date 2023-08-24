@@ -15,7 +15,7 @@ function getCharById(req, res){
         name: data.name,
         gender: data.gender,
         species: data.species,
-        origin: data.origin?.name,
+        origin: data.origin.name,
         image: data.image,
         status: data.status
       }
